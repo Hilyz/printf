@@ -32,9 +32,11 @@ buffer[BUFF_SIZE - 1] = '\0';
 for (i = 0; i < width - 1; i++)
 buffer[BUFF_SIZE - i - 2] = padd;
 if (flags & F_MINUS)
-return (write(1, &buffer[0], 1) +write(1, &buffer[BUFF_SIZE - i - 1], width - 1));
+return (write(1, &buffer[0], 1) + write(1,
+&buffer[BUFF_SIZE - i - 1], width - 1));
 else
-return (write(1, &buffer[BUFF_SIZE - i - 1], width - 1) + write(1, &buffer[0], 1));
+return (write(1, &buffer[BUFF_SIZE - i - 1],
+width - 1) + write(1, &buffer[0], 1));
 }
 return (write(1, &buffer[0], 1));
 }
@@ -131,7 +133,6 @@ buffer[--ind] = extra_c;
 return (write(1, &buffer[ind], length));
 }
 /**
-*
 * write_unsgnd - Writes an unsigned number
 * @is_negative: Number indicating if the num is negative
 * @ind: Index at which the number starts in the buffer
@@ -228,7 +229,8 @@ if (extra_c)
 buffer[--padd_start] = extra_c;
 buffer[1] = '0';
 buffer[2] = 'x';
-return (write(1, &buffer[padd_start], i - padd_start) + write(1, &buffer[ind], length - (1 - padd_start) - 2));}
+return (write(1, &buffer[padd_start], i - padd_start) + write(1, &buffer[ind],
+length - (1 - padd_start) - 2)); }
 }
 buffer[--ind] = 'x';
 buffer[--ind] = '0';
